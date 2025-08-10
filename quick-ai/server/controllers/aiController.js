@@ -31,7 +31,7 @@ export const generateArticle = async (req, res)=>{
 
     const content = response.choices[0].message.content
 
-    await sql` INSERT INTO creations (user_id, prompt, content, type) values (${userId}, ${prompt}, ${content}, type)`
+    await sql` INSERT INTO creations (user_id, prompt, content, type) VALUES (${userId}, ${prompt}, ${content}, 'article')`
 
     if(plan !== 'premium'){
         await clerkClient.users.updateUserMetadata (userId, {
@@ -41,10 +41,10 @@ export const generateArticle = async (req, res)=>{
         })
     }
 
-    res.json ({succes: true, content})
+    res.json ({success: true, content})
 
     } catch (error){
         console.log(error.message)
-        res.json({succes: false, message: error.message})
+        res.json({success: false, message: error.message})
     }
 }
