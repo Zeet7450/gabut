@@ -1,4 +1,4 @@
-# E-Commerce CS AI
+# E-Commerce Sijual AI
 
 A modern e-commerce platform built with Next.js, TypeScript, and Tailwind CSS, featuring AI-powered customer service integration with n8n and Neon PostgreSQL database.
 
