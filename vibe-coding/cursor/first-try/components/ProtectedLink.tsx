@@ -32,3 +32,4 @@ export function ProtectedLink({ href, children, className, onClick }: ProtectedL
     </Link>
   )
 }
+
