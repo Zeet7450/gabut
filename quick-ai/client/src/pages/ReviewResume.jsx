@@ -37,55 +37,79 @@ const ReviewResume = () => {
 
 
   return (
-    <div className='h-full overflow-y-scroll p-6 flex items-start flex-wrap gap-4 text-slate-700'>
-      {/* left col */}
-      <form onSubmit={onSubmitHandler} className='w-full  max-w-lg p-4 bg-white rounded-lg border border-gray-200'>
-        <div className='flex items-center gap-3'>
-          <Sparkles className='w-6 text-[#00DA83]' />
-          <h1 className='text-xl font-semibold'>Resume Review</h1>
+    <div className='h-full overflow-y-auto p-6 space-y-6'>
+      {/* Header */}
+      <div className='flex items-center gap-3 mb-6'>
+        <div className='p-3 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-500'>
+          <FileText className='w-6 h-6 text-white' />
         </div>
-        <p className='mt-6 text-sm font-medium'>Upload Resume</p>
-
-        <input onChange={(e)=> setInput(e.target.files[0])} type="file" accept='application/pdf' className='w-full p-2 px-3 mt-2 outline-none text-sm rounded-md border border-gray-300 text-gray-600' required />
-
-        <p className='text-xs text-gray-500 font-light mt-1'>Supports PDF resume only.</p>  
-
-      
-        <button className='w-full flex justify-center items-center gap-2 bg-gradient-to-r from-[#00DA83] to-[#009BB3] text-white px-4 py-2 mt-6 text-sm rounded-lg cursor-pointer'>
-          {
-            loading ? <span className='w-4 h-4 my-1 rounded-full border-2 border-t-transparent animate-spin'></span> 
-            : <FileText className='w-5' />
-          }
-          Review Resume
-        </button>
-
-      </form>
-
-      {/* Right col */}
-      <div className='w-full max-w-lg p-4 bg-white rounded-lg flex flex-col border border-gray-200 min-h-96'>
-
-        <div className='flex items-center gap-3'>
-          <FileText className='w-5 h-5 text-[#00DA83]'/>
-          <h1 className='text-xl font-semibold'>Analysis Results</h1>
+        <div>
+          <h1 className='text-2xl font-bold text-white'>Resume Review</h1>
+          <p className='text-purple-200'>Get AI-powered resume analysis and feedback</p>
         </div>
-        
-
-        {!content ? (
-          <div className='flex-1 flex justify-center items-center'>
-            <div className='text-sm flex flex-col items-center gap-5 text-gray-400 '>
-              <FileText className='w-9 h-9'/>
-              <p>Upload a resume and click “Review Resume” to get started</p>
-            </div>
-          </div>
-        ): (
-          <div className='mt-3 full overflow-y-scroll text-sm text-slate-600'>
-            <div className='reset-tw'>
-              <Markdown>{content}</Markdown>
-            </div>
-          </div>
-        )}
       </div>
 
+      <div className='flex flex-col lg:flex-row gap-6'>
+        {/* Configuration Panel */}
+        <div className='w-full lg:max-w-md'>
+          <div className='glass p-6 rounded-2xl border border-purple-500/20'>
+            <form onSubmit={onSubmitHandler} className='space-y-6'>
+              <div>
+                <label className='block text-sm font-medium text-purple-200 mb-2'>
+                  Upload Resume
+                </label>
+                <div className='relative'>
+                  <input 
+                    onChange={(e)=> setInput(e.target.files[0])} 
+                    type="file" 
+                    accept='application/pdf' 
+                    className='w-full p-3 bg-purple-900/30 border border-purple-500/30 rounded-xl text-white file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-medium file:bg-purple-600 file:text-white hover:file:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-transparent' 
+                    required 
+                  />
+                </div>
+                <p className='text-xs text-purple-400 mt-2'>Supports PDF resume only</p>
+              </div>
+              
+              <button 
+                disabled={loading} 
+                className='w-full btn-primary flex justify-center items-center gap-2 px-6 py-3 text-sm font-medium rounded-xl transition-all duration-200'
+              >
+                {loading ? (
+                  <span className='w-4 h-4 rounded-full border-2 border-white border-t-transparent animate-spin'></span>
+                ) : (
+                  <FileText className='w-5 h-5' />
+                )}
+                Review Resume
+              </button>
+            </form>
+          </div>
+        </div>
+
+        {/* Output Panel */}
+        <div className='flex-1'>
+          <div className='glass p-6 rounded-2xl border border-purple-500/20 min-h-96'>
+            <div className='flex items-center gap-3 mb-4'>
+              <FileText className='w-5 h-5 text-teal-400'/>
+              <h2 className='text-xl font-semibold text-white'>Analysis Results</h2>
+            </div>
+
+            {!content ? (
+              <div className='flex-1 flex justify-center items-center min-h-64'>
+                <div className='text-center space-y-4'>
+                  <div className='w-16 h-16 mx-auto rounded-full bg-gradient-to-r from-teal-500/20 to-cyan-500/20 flex items-center justify-center'>
+                    <FileText className='w-8 h-8 text-teal-400'/>
+                  </div>
+                  <p className='text-purple-300'>Upload a resume and click "Review Resume" to get started</p>
+                </div>
+              </div>
+            ) : (
+              <div className='prose prose-invert max-w-none text-purple-100'>
+                <Markdown>{content}</Markdown>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
     </div>
   )
 }

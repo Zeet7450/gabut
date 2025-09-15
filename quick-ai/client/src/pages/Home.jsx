@@ -8,14 +8,14 @@ import Footer from '../components/Footer'
 
 const Home = () => {
   return (
-    <>
+    <div className='gradient-dark min-h-screen'>
       <Navbar />
       <Hero />
       <AiTools />
       <Terstimonial />
       <Plan />
       <Footer />
-    </>
+    </div>
   )
 }
 

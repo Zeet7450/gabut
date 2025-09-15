@@ -1,306 +1,254 @@
-# Quick AI - AI-Powered Content Creation Platform
+# 🚀 Quick AI - AI-Powered Content Creation Platform
 
-![Quick AI Logo](client/src/assets/logo.svg)
+A modern, full-stack web application that leverages artificial intelligence to help users create various types of content including articles, blog titles, images, and more. Built with React, Node.js, and integrated with multiple AI services.
 
-Quick AI adalah platform AI yang powerful untuk membuat konten berkualitas tinggi. Dengan berbagai tools AI yang canggih, Anda dapat menulis artikel, menghasilkan gambar, menghapus background, dan banyak lagi - semuanya dalam satu platform yang mudah digunakan.
+## ✨ Features
 
-## 🚀 Fitur Utama
+### 🤖 AI-Powered Tools
 
-### ✍️ AI Article Writer
+- **📝 Article Writer** - Generate comprehensive articles on any topic
+- **🏷️ Blog Title Generator** - Create compelling blog titles with AI
+- **🎨 Image Generator** - Generate stunning images from text descriptions
+- **✂️ Background Removal** - Remove backgrounds from images automatically
+- **🔧 Object Removal** - Remove unwanted objects from images
+- **📄 Resume Review** - Get AI-powered resume analysis and feedback
 
-- Generate artikel berkualitas tinggi dengan AI
-- Pilihan panjang artikel (Short, Medium, Long)
-- Interface yang user-friendly dengan preview real-time
-- Mendukung berbagai topik dan niche
+### 🎨 Modern UI/UX
 
-### 🎨 AI Image Generation
+- **Dark Purple Theme** - Beautiful dark purple gradient design
+- **Glass Morphism** - Modern glass effect with backdrop blur
+- **Responsive Design** - Optimized for all screen sizes
+- **Smooth Animations** - Elegant transitions and hover effects
+- **Auto-Download** - Automatic download for generated images
 
-- Generate gambar dengan AI menggunakan Clipdrop API
-- Berbagai style dan tema
-- Upload dan publish hasil karya
-- Kualitas tinggi dan cepat
+### 🔐 Authentication & User Management
 
-### 🖼️ Background Removal
+- **Clerk Integration** - Secure user authentication
+- **User Profiles** - Personalized user experience
+- **Usage Tracking** - Free and premium plan management
+- **Community Gallery** - Share and discover AI creations
 
-- Hapus background dari gambar secara otomatis
-- Menggunakan Cloudinary AI
-- Hasil yang akurat dan natural
-- Cocok untuk foto produk dan profil
-
-### ✂️ Object Removal
-
-- Hapus objek yang tidak diinginkan dari gambar
-- AI-powered object detection
-- Hasil yang seamless dan natural
-- Perfect untuk editing foto
-
-### 📝 Resume Reviewer
-
-- Review resume dengan AI
-- Feedback konstruktif dan actionable
-- Analisis struktur dan konten
-- Tips untuk meningkatkan peluang diterima kerja
-
-### 📰 Blog Title Generator
-
-- Generate judul blog yang catchy
-- Berbagai kategori dan style
-- Optimized untuk SEO
-- Ide kreatif yang menarik
-
-## 🛠️ Teknologi yang Digunakan
+## 🛠️ Tech Stack
 
 ### Frontend
 
-- **React 19** - Modern React dengan hooks
-- **Vite** - Fast build tool dan dev server
+- **React 19** - Modern React with latest features
+- **Vite** - Fast build tool and development server
 - **Tailwind CSS** - Utility-first CSS framework
 - **React Router** - Client-side routing
-- **Clerk** - Authentication dan user management
-- **Axios** - HTTP client
-- **React Hot Toast** - Notifications
-- **Lucide React** - Beautiful icons
+- **Clerk React** - Authentication components
+- **Axios** - HTTP client for API requests
+- **Lucide React** - Beautiful icon library
+- **React Hot Toast** - Toast notifications
 - **React Markdown** - Markdown rendering
 
 ### Backend
 
 - **Node.js** - JavaScript runtime
-- **Express.js** - Web framework
+- **Express.js** - Web application framework
 - **Clerk Express** - Authentication middleware
 - **Neon Database** - PostgreSQL database
-- **Cloudinary** - Image storage dan processing
-- **OpenAI API** - AI text generation (Gemini)
-- **Clipdrop API** - AI image generation
+- **Cloudinary** - Image storage and processing
 - **Multer** - File upload handling
-- **PDF Parse** - PDF text extraction
+- **OpenAI** - AI model integration (Gemini)
+- **PDF-Parse** - PDF processing
+- **CORS** - Cross-origin resource sharing
 
-## 📁 Struktur Project
+### AI Services
 
-```
-quick-ai/
-├── client/                 # React Frontend
-│   ├── src/
-│   │   ├── components/     # Reusable components
-│   │   ├── pages/         # Page components
-│   │   ├── assets/        # Images dan static files
-│   │   └── App.jsx        # Main app component
-│   ├── package.json
-│   └── vercel.json
-├── server/                 # Node.js Backend
-│   ├── controllers/       # API controllers
-│   ├── routes/           # API routes
-│   ├── middlewares/      # Custom middlewares
-│   ├── configs/          # Database dan service configs
-│   ├── server.js         # Main server file
-│   └── package.json
-└── README.md
-```
+- **Google Gemini 2.0 Flash** - Text generation and analysis
+- **Clipdrop API** - Image processing and manipulation
+- **Cloudinary** - Image optimization and transformation
 
-## 🚀 Cara Install dan Menjalankan
+## 🚀 Getting Started
 
 ### Prerequisites
 
-- Node.js (v18 atau lebih baru)
-- npm atau yarn
-- Akun Cloudinary
-- Akun Clerk
-- Akun Neon Database
-- API Key Clipdrop
-- API Key Gemini (Google AI)
+- Node.js (v18 or higher)
+- npm or yarn
+- Git
 
-### 1. Clone Repository
+### Installation
 
-```bash
-git clone https://github.com/yourusername/quick-ai.git
-cd quick-ai
+1. **Clone the repository**
+
+   ```bash
+   git clone <repository-url>
+   cd quick-ai
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   # Install server dependencies
+   cd server
+   npm install
+
+   # Install client dependencies
+   cd ../client
+   npm install
+   ```
+
+3. **Environment Setup**
+   Create a `.env` file in the root directory with the following variables:
+
+   ```env
+   # Database
+   DATABASE_URL=your_neon_database_url
+
+   # Clerk Authentication
+   VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+   CLERK_SECRET_KEY=your_clerk_secret_key
+
+   # AI Services
+   GEMINI_API_KEY=your_gemini_api_key
+   CLIPDROP_API_KEY=your_clipdrop_api_key
+
+   # Cloudinary
+   CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
+   CLOUDINARY_API_KEY=your_cloudinary_api_key
+   CLOUDINARY_API_SECRET=your_cloudinary_api_secret
+
+   # Frontend
+   VITE_BASE_URL=http://localhost:3000
+   ```
+
+4. **Run the application**
+
+   ```bash
+   # Start the server (Terminal 1)
+   cd server
+   npm run server
+
+   # Start the client (Terminal 2)
+   cd client
+   npm run dev
+   ```
+
+5. **Access the application**
+   - Frontend: http://localhost:5173
+   - Backend API: http://localhost:3000
+
+## 📁 Project Structure
+
+```
+quick-ai/
+├── client/                 # React frontend
+│   ├── src/
+│   │   ├── components/     # Reusable UI components
+│   │   ├── pages/          # Page components
+│   │   ├── assets/         # Static assets
+│   │   └── main.jsx        # Application entry point
+│   ├── public/             # Public assets
+│   └── package.json
+├── server/                 # Node.js backend
+│   ├── configs/            # Configuration files
+│   ├── controllers/        # Route controllers
+│   ├── middlewares/        # Custom middleware
+│   ├── routes/             # API routes
+│   └── server.js           # Server entry point
+├── .env                    # Environment variables
+└── README.md
 ```
 
-### 2. Install Dependencies
+## 🎨 UI/UX Features
 
-#### Frontend
+### Design System
 
-```bash
-cd client
-npm install
-```
+- **Color Palette**: Dark purple gradients with glass morphism
+- **Typography**: Inter font family with proper hierarchy
+- **Spacing**: Consistent spacing using Tailwind CSS
+- **Animations**: Smooth transitions and hover effects
 
-#### Backend
+### Component Features
 
-```bash
-cd server
-npm install
-```
-
-### 3. Environment Variables
-
-#### Frontend (.env)
-
-```env
-VITE_BASE_URL=http://localhost:3000
-VITE_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
-```
-
-#### Backend (.env)
-
-```env
-PORT=3000
-DATABASE_URL=your_neon_database_url
-CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
-CLOUDINARY_API_KEY=your_cloudinary_api_key
-CLOUDINARY_API_SECRET=your_cloudinary_api_secret
-CLERK_SECRET_KEY=your_clerk_secret_key
-GEMINI_API_KEY=your_gemini_api_key
-CLIPDROP_API_KEY=your_clipdrop_api_key
-```
-
-### 4. Database Setup
-
-Buat tabel `creations` di Neon Database:
-
-```sql
-CREATE TABLE creations (
-    id SERIAL PRIMARY KEY,
-    user_id VARCHAR(255) NOT NULL,
-    prompt TEXT NOT NULL,
-    content TEXT NOT NULL,
-    type VARCHAR(50) NOT NULL,
-    publish BOOLEAN DEFAULT false,
-    likes TEXT[] DEFAULT '{}',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-```
-
-### 5. Menjalankan Aplikasi
-
-#### Development Mode
-
-Terminal 1 (Backend):
-
-```bash
-cd server
-npm run server
-```
-
-Terminal 2 (Frontend):
-
-```bash
-cd client
-npm run dev
-```
-
-#### Production Mode
-
-Build frontend:
-
-```bash
-cd client
-npm run build
-```
-
-Start server:
-
-```bash
-cd server
-npm start
-```
-
-Aplikasi akan berjalan di:
-
-- Frontend: http://localhost:5173
-- Backend: http://localhost:3000
+- **Responsive Grid**: Adaptive layouts for all screen sizes
+- **Loading States**: Beautiful loading animations
+- **Error Handling**: User-friendly error messages
+- **Toast Notifications**: Real-time feedback
+- **Auto-Download**: Seamless file downloads
 
 ## 🔧 API Endpoints
 
-### Authentication
+### Authentication Required
 
-Semua endpoint memerlukan authentication via Clerk.
+- `POST /api/ai/generate-article` - Generate articles
+- `POST /api/ai/generate-blog-titles` - Generate blog titles
+- `POST /api/ai/generate-image` - Generate images
+- `POST /api/ai/remove-image-background` - Remove backgrounds
+- `POST /api/ai/remove-image-object` - Remove objects
+- `POST /api/ai/resume-review` - Review resumes
+- `GET /api/user/get-user-creations` - Get user creations
+- `GET /api/user/get-published-creations` - Get community creations
 
-### AI Tools
+### Public
 
-- `POST /api/ai/generate-article` - Generate artikel
-- `POST /api/ai/generate-blog-title` - Generate judul blog
-- `POST /api/ai/generate-image` - Generate gambar (Premium)
-- `POST /api/ai/remove-image-background` - Hapus background (Premium)
-- `POST /api/ai/remove-image-object` - Hapus objek (Premium)
-- `POST /api/ai/resume-review` - Review resume (Premium)
+- `GET /api/test` - API health check
 
-### User Management
+## 🚀 Deployment
 
-- `GET /api/user/get-user-creations` - Ambil creations user
-- `GET /api/user/get-published-creations` - Ambil creations yang dipublish
-- `POST /api/user/toggle-creation-publish` - Toggle like/unlike
+### Frontend (Vercel)
 
-## 💎 Pricing Plans
+1. Connect your GitHub repository to Vercel
+2. Set environment variables in Vercel dashboard
+3. Deploy automatically on push to main branch
 
-### Free Plan
+### Backend (Railway/Render)
 
-- 10 AI generations per month
-- Akses ke Article Writer dan Blog Title Generator
-- Basic features
+1. Connect your GitHub repository
+2. Set environment variables
+3. Deploy with automatic builds
 
-### Premium Plan
+## 🐛 Troubleshooting
 
-- Unlimited AI generations
-- Akses ke semua tools (Image Generation, Background Removal, Object Removal, Resume Review)
-- Priority support
-- Advanced features
+### Common Issues
 
-## 🎯 Cara Penggunaan
+1. **500 Internal Server Error**
 
-### 1. Registrasi/Login
+   - Check environment variables
+   - Verify API keys are valid
+   - Check server logs for detailed errors
 
-- Daftar akun menggunakan Clerk
-- Pilih plan yang sesuai
+2. **401 Unauthorized Error**
 
-### 2. Generate Artikel
+   - Ensure user is logged in
+   - Check Clerk configuration
+   - Verify authentication tokens
 
-- Masuk ke "AI Article Writer"
-- Masukkan topik artikel
-- Pilih panjang artikel
-- Klik "Generate Article"
+3. **CORS Issues**
 
-### 3. Generate Gambar (Premium)
+   - Verify CORS configuration in server.js
+   - Check if frontend URL is allowed
 
-- Masuk ke "AI Image Generation"
-- Masukkan prompt untuk gambar
-- Pilih style dan tema
-- Download hasil
-
-### 4. Hapus Background (Premium)
-
-- Upload gambar
-- AI akan otomatis menghapus background
-- Download hasil
+4. **Port Conflicts**
+   - Ensure ports 3000 and 5173 are available
+   - Kill existing processes if needed
 
 ## 🤝 Contributing
 
-1. Fork repository ini
-2. Buat feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit perubahan (`git commit -m 'Add some AmazingFeature'`)
-4. Push ke branch (`git push origin feature/AmazingFeature`)
-5. Buat Pull Request
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
 
-## 📝 License
+## 📄 License
 
-Distributed under the MIT License. See `LICENSE` for more information.
-
-## 📞 Support
-
-Jika mengalami masalah atau ada pertanyaan:
-
-- Email: support@quickai.com
-- GitHub Issues: [Create an issue](https://github.com/yourusername/quick-ai/issues)
-- Documentation: [Quick AI Docs](https://docs.quickai.com)
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🙏 Acknowledgments
 
-- [OpenAI](https://openai.com) untuk AI text generation
-- [Clipdrop](https://clipdrop.co) untuk AI image generation
-- [Cloudinary](https://cloudinary.com) untuk image processing
-- [Clerk](https://clerk.com) untuk authentication
-- [Neon](https://neon.tech) untuk database hosting
+- **Google Gemini** - AI text generation
+- **Clipdrop** - Image processing services
+- **Cloudinary** - Image storage and optimization
+- **Clerk** - Authentication services
+- **Neon** - Database hosting
+- **Vercel** - Frontend hosting
+
+## 📞 Support
+
+For support and questions, please open an issue in the GitHub repository.
 
 ---
 
-**Dibuat dengan ❤️ untuk memudahkan content creation dengan AI**
+**Made with ❤️ and AI**

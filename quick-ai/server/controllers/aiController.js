@@ -16,7 +16,7 @@ const AI = new OpenAI({
 
 export const generateArticle = async (req, res)=>{
     try{
-        const { userId } = req.auth();
+        const userId = req.userId;
         const { prompt, length } = req.body;
         const plan = req.plan;
         const free_usage = req.free_usage;
@@ -60,7 +60,7 @@ export const generateArticle = async (req, res)=>{
 
 export const generateBlogTitle = async (req, res)=>{
     try{
-        const { userId } = req.auth();
+        const userId = req.userId;
         const { prompt } = req.body;
         const plan = req.plan;
         const free_usage = req.free_usage;
@@ -99,7 +99,7 @@ export const generateBlogTitle = async (req, res)=>{
 
 export const generateImage = async (req, res)=>{
     try{
-        const { userId } = req.auth();
+        const userId = req.userId;
         const { prompt, publish } = req.body;
         const plan = req.plan;
 
@@ -133,7 +133,7 @@ export const generateImage = async (req, res)=>{
 
 export const removeImageBackground = async (req, res)=>{
     try{
-        const { userId } = req.auth();
+        const userId = req.userId;
         const image = req.file;
         const plan = req.plan;
 
@@ -165,7 +165,7 @@ export const removeImageBackground = async (req, res)=>{
 
 export const removeImageObject = async (req, res)=>{
     try{
-        const { userId } = req.auth();
+        const userId = req.userId;
         const { object } = req.body;
         const image = req.file;
         const plan = req.plan;
@@ -196,7 +196,7 @@ export const removeImageObject = async (req, res)=>{
 
 export const resumeReview = async (req, res)=>{
     try{
-        const { userId } = req.auth();
+        const userId = req.userId;
         const resume = req.file;
         const plan = req.plan;
 
