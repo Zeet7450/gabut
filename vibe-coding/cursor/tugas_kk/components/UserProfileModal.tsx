@@ -144,9 +144,9 @@ export function UserProfileModal({ isOpen, onClose }: UserProfileModalProps) {
               onClick={(e) => e.stopPropagation()}
             >
               {/* Header */}
-              <div className="flex items-center justify-between p-6 border-b border-gray-800">
+              <div className="flex items-center justify-between p-4 md:p-6 border-b border-gray-800">
                 <div className="flex items-center space-x-4">
-                  <h2 className="text-2xl font-bold text-text-primary">{t('profile.title')}</h2>
+                  <h2 className="text-xl md:text-2xl font-bold text-text-primary">{t('profile.title')}</h2>
                   <div className="flex items-center space-x-2 text-sm text-text-muted">
                     <Globe className="w-4 h-4" />
                     <LanguageSwitcher />
@@ -154,15 +154,17 @@ export function UserProfileModal({ isOpen, onClose }: UserProfileModalProps) {
                 </div>
                 <button
                   onClick={onClose}
-                  className="p-2 text-text-muted hover:text-text-primary transition-colors rounded-lg hover:bg-gray-800/50"
+                  className="p-3 md:p-2 text-text-muted hover:text-text-primary transition-colors rounded-lg hover:bg-gray-800/50 active:bg-gray-800/70"
+                  aria-label="Close profile modal"
                 >
-                  <X className="w-5 h-5" />
+                  <X className="w-6 h-6 md:w-5 md:h-5" />
                 </button>
               </div>
 
+
               {/* Content */}
-              <div className="flex-1 overflow-y-auto p-6">
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="flex-1 overflow-y-auto p-4 md:p-6">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 md:gap-8">
                   {/* Left Column - Profile Image & Basic Info */}
                   <div className="lg:col-span-1 space-y-6">
                     {/* Profile Image Section */}
@@ -257,10 +259,52 @@ export function UserProfileModal({ isOpen, onClose }: UserProfileModalProps) {
                         </div>
                       </div>
                     </div>
+
+                    {/* Settings Section */}
+                    <div className="bg-gray-800/30 rounded-lg p-4 space-y-4">
+                      <h4 className="text-sm font-semibold text-text-primary mb-3 flex items-center space-x-2">
+                        <Globe className="w-4 h-4" />
+                        <span>Settings</span>
+                      </h4>
+                      
+                      {/* Language Settings */}
+                      <div className="space-y-2">
+                        <label className="text-xs font-medium text-text-muted uppercase tracking-wide">
+                          Language / Bahasa
+                        </label>
+                        <div className="bg-bg-primary border border-gray-700 rounded-lg p-3">
+                          <LanguageSwitcher />
+                        </div>
+                        <p className="text-xs text-text-muted">
+                          Choose your preferred language for the interface
+                        </p>
+                      </div>
+                    </div>
                   </div>
 
                   {/* Right Column - Form Fields */}
                   <div className="lg:col-span-2 space-y-6">
+
+                    {/* Settings Section - Mobile Prominent */}
+                    <div className="lg:hidden bg-gray-800/30 rounded-lg p-4 space-y-4 border border-gray-700/50">
+                      <h3 className="text-lg font-semibold text-text-primary flex items-center space-x-2">
+                        <Globe className="w-5 h-5" />
+                        <span>Settings</span>
+                      </h3>
+                      
+                      {/* Language Settings */}
+                      <div className="space-y-3">
+                        <label className="text-sm font-medium text-text-primary">
+                          Language / Bahasa
+                        </label>
+                        <div className="bg-bg-primary border border-gray-700 rounded-lg p-4">
+                          <LanguageSwitcher />
+                        </div>
+                        <p className="text-xs text-text-muted">
+                          Choose your preferred language for the interface
+                        </p>
+                      </div>
+                    </div>
 
                     {/* Contact Information */}
                     <div className="space-y-6">
@@ -414,7 +458,7 @@ export function UserProfileModal({ isOpen, onClose }: UserProfileModalProps) {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex justify-between items-center p-6 border-t border-gray-800 bg-gray-800/30">
+              <div className="flex flex-col md:flex-row justify-between items-center p-4 md:p-6 border-t border-gray-800 bg-gray-800/30 space-y-4 md:space-y-0">
                 <div className="flex items-center space-x-2 text-sm text-text-muted">
                   <span>{t('profile.completion')}: 75%</span>
                   <div className="w-20 h-2 bg-gray-700 rounded-full overflow-hidden">
@@ -422,13 +466,13 @@ export function UserProfileModal({ isOpen, onClose }: UserProfileModalProps) {
                   </div>
                 </div>
                 
-                <div className="flex space-x-3">
+                <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-3 w-full md:w-auto">
                   {isEditing ? (
                     <>
                       <button
                         onClick={handleCancel}
                         disabled={isLoading}
-                        className="flex items-center space-x-2 px-4 py-2 text-text-muted hover:text-text-primary transition-colors disabled:opacity-50"
+                        className="flex items-center justify-center space-x-2 px-4 py-3 text-text-muted hover:text-text-primary transition-colors disabled:opacity-50 bg-gray-700 hover:bg-gray-600 rounded-lg font-medium"
                       >
                         <RotateCcw className="w-4 h-4" />
                         <span>{t('profile.cancel')}</span>
@@ -436,7 +480,7 @@ export function UserProfileModal({ isOpen, onClose }: UserProfileModalProps) {
                       <button
                         onClick={handleSave}
                         disabled={isLoading}
-                        className="flex items-center space-x-2 px-6 py-2 bg-green-accent hover:bg-green-accent/90 text-white rounded-lg transition-colors disabled:opacity-50"
+                        className="flex items-center justify-center space-x-2 px-6 py-3 bg-green-accent hover:bg-green-accent/90 text-white rounded-lg transition-colors disabled:opacity-50 font-medium"
                       >
                         {isLoading ? (
                           <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
@@ -449,7 +493,7 @@ export function UserProfileModal({ isOpen, onClose }: UserProfileModalProps) {
                   ) : (
                     <button
                       onClick={() => setIsEditing(true)}
-                      className="flex items-center space-x-2 px-6 py-2 bg-green-accent hover:bg-green-accent/90 text-white rounded-lg transition-colors"
+                      className="flex items-center justify-center space-x-2 px-6 py-3 bg-green-accent hover:bg-green-accent/90 text-white rounded-lg transition-colors font-medium"
                     >
                       <Edit3 className="w-4 h-4" />
                       <span>{t('profile.edit')}</span>

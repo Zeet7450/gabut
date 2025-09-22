@@ -129,7 +129,7 @@ export default function ContactPage() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="card text-center group hover:border-green-accent/50 transition-colors"
+                className="card text-center group hover:border-green-accent/50 transition-all duration-200 hover:scale-[1.01]"
               >
                 <div className="w-16 h-16 bg-green-accent/10 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-green-accent/20 transition-colors">
                   <info.icon className="w-8 h-8 text-green-accent" />
@@ -175,7 +175,7 @@ export default function ContactPage() {
             </motion.p>
           </div>
 
-          <div className="grid lg:grid-cols-3 gap-16 -mt-8">
+          <div className="grid lg:grid-cols-3 gap-8 lg:gap-16 -mt-8">
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
@@ -196,14 +196,14 @@ export default function ContactPage() {
                   </p>
                   <button
                     onClick={() => setIsSubmitted(false)}
-                    className="btn-primary"
+                    className="bg-transparent border-2 border-white text-white font-bold py-3 px-6 rounded-2xl transition-all duration-200 hover:scale-[1.01]"
                   >
                     Send Another Message
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6 p-6 bg-surface rounded-xl border border-gray-700/50 h-full flex flex-col">
-                  <div className="grid md:grid-cols-2 gap-6">
+                <form onSubmit={handleSubmit} className="space-y-6 p-4 md:p-6 bg-surface rounded-xl border border-gray-700/50 h-full flex flex-col">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                     <div>
                       <label htmlFor="name" className="block text-text-primary font-medium mb-2">
                         Name
@@ -215,7 +215,7 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={handleInputChange}
                         required
-                        className="w-full input py-3 px-3 text-base"
+                        className="w-full input py-3 px-4 text-base"
                         placeholder="Your full name"
                       />
                     </div>
@@ -230,7 +230,7 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleInputChange}
                         required
-                        className="w-full input py-3 px-3 text-base"
+                        className="w-full input py-3 px-4 text-base"
                         placeholder="your@email.com"
                       />
                     </div>
@@ -247,7 +247,7 @@ export default function ContactPage() {
                       value={formData.subject}
                       onChange={handleInputChange}
                       required
-                      className="w-full input py-4 px-4 text-lg"
+                      className="w-full input py-3 px-4 text-base md:text-lg"
                       placeholder="What's this about?"
                     />
                   </div>
@@ -262,8 +262,8 @@ export default function ContactPage() {
                       value={formData.message}
                       onChange={handleInputChange}
                       required
-                      rows={7}
-                      className="w-full input resize-none py-3 px-3 text-base"
+                      rows={6}
+                      className="w-full input resize-none py-3 px-4 text-base"
                       placeholder="Tell us how we can help you..."
                     />
                   </div>
@@ -271,7 +271,7 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 transition-all duration-300 flex items-center justify-center space-x-2 py-4 text-lg disabled:opacity-50 disabled:cursor-not-allowed rounded-lg font-medium"
+                    className="w-full bg-transparent border-2 border-white text-white transition-all duration-200 hover:scale-[1.01] flex items-center justify-center space-x-2 py-3 md:py-4 text-base md:text-lg disabled:opacity-50 disabled:cursor-not-allowed rounded-2xl font-bold"
                   >
                     <Send className="w-5 h-5" />
                     <span>
@@ -316,7 +316,7 @@ export default function ContactPage() {
                     and general inquiries.
                   </p>
                   {session ? (
-                    <button className="w-full bg-gradient-to-r from-green-accent to-green-accent/90 hover:from-green-accent/90 hover:to-green-accent text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg text-sm">
+                    <button className="w-full bg-green-accent hover:bg-green-accent/90 text-white font-bold py-3 px-4 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg text-sm">
                       Start Chatting Now
                     </button>
                   ) : (
@@ -326,7 +326,7 @@ export default function ContactPage() {
                           Sign in to access our AI assistant
                         </p>
                       </div>
-                      <button className="w-full bg-transparent border-2 border-green-accent text-green-accent hover:bg-green-accent hover:text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 text-sm">
+                      <button className="w-full bg-green-accent hover:bg-green-accent/90 text-white font-bold py-3 px-4 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-lg text-sm">
                         Sign In to Chat
                       </button>
                     </div>
@@ -356,7 +356,7 @@ export default function ContactPage() {
                 </div>
                 
                 <div className="space-y-3">
-                  <div className="flex items-center space-x-3 p-3 bg-gray-800/50 rounded-lg hover:bg-gray-800/70 transition-colors">
+                  <div className="flex items-center space-x-3 p-3 bg-gray-800/50 rounded-lg hover:bg-gray-800/70 transition-all duration-200 hover:scale-[1.01]">
                     <Mail className="w-4 h-4 text-green-accent" />
                     <div>
                       <p className="font-medium text-text-primary text-sm">Email Support</p>
@@ -364,7 +364,7 @@ export default function ContactPage() {
                     </div>
                   </div>
                   
-                  <div className="flex items-center space-x-3 p-3 bg-gray-800/50 rounded-lg hover:bg-gray-800/70 transition-colors">
+                  <div className="flex items-center space-x-3 p-3 bg-gray-800/50 rounded-lg hover:bg-gray-800/70 transition-all duration-200 hover:scale-[1.01]">
                     <Phone className="w-4 h-4 text-green-accent" />
                     <div>
                       <p className="font-medium text-text-primary text-sm">Phone Support</p>
@@ -372,7 +372,7 @@ export default function ContactPage() {
                     </div>
                   </div>
                   
-                  <div className="flex items-center space-x-3 p-3 bg-gray-800/50 rounded-lg hover:bg-gray-800/70 transition-colors">
+                  <div className="flex items-center space-x-3 p-3 bg-gray-800/50 rounded-lg hover:bg-gray-800/70 transition-all duration-200 hover:scale-[1.01]">
                     <Clock className="w-4 h-4 text-green-accent" />
                     <div>
                       <p className="font-medium text-text-primary text-sm">Business Hours</p>
@@ -420,7 +420,7 @@ export default function ContactPage() {
               >
                 <button
                   onClick={() => toggleFaq(index)}
-                  className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-800/50 transition-colors duration-200"
+                  className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-gray-800/50 transition-all duration-200 hover:scale-[1.01]"
                 >
                   <h3 className="text-lg font-semibold text-text-primary pr-4">
                     {faq.question}

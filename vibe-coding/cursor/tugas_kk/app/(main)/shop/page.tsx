@@ -132,103 +132,103 @@ export default function ShopPage() {
           </div>
 
           {/* Menu Categories */}
-          <div className="bg-surface border border-gray-800 rounded-lg p-6">
+          <div className="bg-surface border border-gray-800 rounded-lg p-4 md:p-6">
             <h3 className="font-semibold text-text-primary mb-4">Menu Categories</h3>
-            <div className="grid grid-cols-8 gap-2">
+            <div className="grid grid-cols-4 sm:grid-cols-6 md:grid-cols-8 gap-2">
               <div 
-                className={`group cursor-pointer p-2 rounded-lg transition-all duration-200 text-center ${
+                className={`group cursor-pointer p-2 md:p-3 rounded-lg transition-all duration-200 text-center ${
                   filters.category === 'all' ? 'bg-green-accent/20 border-2 border-green-accent' : 'hover:bg-gray-800/50 border-2 border-transparent'
                 }`}
                 onClick={() => handleCategoryClick('all')}
               >
-                <div className="w-8 h-8 bg-gradient-to-br from-green-accent to-yellow-accent rounded-full flex items-center justify-center mx-auto mb-1">
-                  <span className="text-white font-bold text-sm">A</span>
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-green-accent to-yellow-accent rounded-full flex items-center justify-center mx-auto mb-1">
+                  <span className="text-white font-bold text-sm md:text-base">A</span>
                 </div>
-                <p className="text-xs text-text-secondary font-medium">All</p>
+                <p className="text-xs md:text-sm text-text-secondary font-medium">All</p>
               </div>
               
               <div 
-                className={`group cursor-pointer p-2 rounded-lg transition-all duration-200 text-center ${
+                className={`group cursor-pointer p-2 md:p-3 rounded-lg transition-all duration-200 text-center ${
                   filters.category === 'Makanan' ? 'bg-green-accent/20 border-2 border-green-accent' : 'hover:bg-gray-800/50 border-2 border-transparent'
                 }`}
                 onClick={() => handleCategoryClick('Makanan')}
               >
-                <div className="w-8 h-8 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-1">
-                  <span className="text-white font-bold text-sm">🍽️</span>
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-1">
+                  <span className="text-white font-bold text-sm md:text-base">🍽️</span>
                 </div>
-                <p className="text-xs text-text-secondary font-medium">Food</p>
+                <p className="text-xs md:text-sm text-text-secondary font-medium">Food</p>
               </div>
               
               <div 
-                className={`group cursor-pointer p-2 rounded-lg transition-all duration-200 text-center ${
+                className={`group cursor-pointer p-2 md:p-3 rounded-lg transition-all duration-200 text-center ${
                   filters.category === 'Minuman' ? 'bg-green-accent/20 border-2 border-green-accent' : 'hover:bg-gray-800/50 border-2 border-transparent'
                 }`}
                 onClick={() => handleCategoryClick('Minuman')}
               >
-                <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-1">
-                  <span className="text-white font-bold text-sm">🥤</span>
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-1">
+                  <span className="text-white font-bold text-sm md:text-base">🥤</span>
                 </div>
-                <p className="text-xs text-text-secondary font-medium">Beverages</p>
+                <p className="text-xs md:text-sm text-text-secondary font-medium">Beverages</p>
               </div>
               
               <div 
-                className={`group cursor-pointer p-2 rounded-lg transition-all duration-200 text-center ${
+                className={`group cursor-pointer p-2 md:p-3 rounded-lg transition-all duration-200 text-center ${
                   filters.category === 'Dessert' ? 'bg-green-accent/20 border-2 border-green-accent' : 'hover:bg-gray-800/50 border-2 border-transparent'
                 }`}
                 onClick={() => handleCategoryClick('Dessert')}
               >
-                <div className="w-8 h-8 bg-gradient-to-br from-pink-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-1">
-                  <span className="text-white font-bold text-sm">🍰</span>
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-pink-500 to-purple-500 rounded-full flex items-center justify-center mx-auto mb-1">
+                  <span className="text-white font-bold text-sm md:text-base">🍰</span>
                 </div>
-                <p className="text-xs text-text-secondary font-medium">Desserts</p>
+                <p className="text-xs md:text-sm text-text-secondary font-medium">Desserts</p>
               </div>
               
               <div 
-                className={`group cursor-pointer p-2 rounded-lg transition-all duration-200 text-center ${
+                className={`group cursor-pointer p-2 md:p-3 rounded-lg transition-all duration-200 text-center ${
                   filters.category === 'Snack' ? 'bg-green-accent/20 border-2 border-green-accent' : 'hover:bg-gray-800/50 border-2 border-transparent'
                 }`}
                 onClick={() => handleCategoryClick('Snack')}
               >
-                <div className="w-8 h-8 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-1">
-                  <span className="text-white font-bold text-sm">🍿</span>
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-1">
+                  <span className="text-white font-bold text-sm md:text-base">🍿</span>
                 </div>
-                <p className="text-xs text-text-secondary font-medium">Snacks</p>
+                <p className="text-xs md:text-sm text-text-secondary font-medium">Snacks</p>
               </div>
               
               <div 
-                className={`group cursor-pointer p-2 rounded-lg transition-all duration-200 text-center ${
+                className={`group cursor-pointer p-2 md:p-3 rounded-lg transition-all duration-200 text-center ${
                   filters.category === 'Healthy' ? 'bg-green-accent/20 border-2 border-green-accent' : 'hover:bg-gray-800/50 border-2 border-transparent'
                 }`}
                 onClick={() => handleCategoryClick('Healthy')}
               >
-                <div className="w-8 h-8 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-1">
-                  <span className="text-white font-bold text-sm">🥗</span>
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-1">
+                  <span className="text-white font-bold text-sm md:text-base">🥗</span>
                 </div>
-                <p className="text-xs text-text-secondary font-medium">Healthy</p>
+                <p className="text-xs md:text-sm text-text-secondary font-medium">Healthy</p>
               </div>
               
               <div 
-                className={`group cursor-pointer p-2 rounded-lg transition-all duration-200 text-center ${
+                className={`group cursor-pointer p-2 md:p-3 rounded-lg transition-all duration-200 text-center ${
                   filters.category === 'Fast Food' ? 'bg-green-accent/20 border-2 border-green-accent' : 'hover:bg-gray-800/50 border-2 border-transparent'
                 }`}
                 onClick={() => handleCategoryClick('Fast Food')}
               >
-                <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-1">
-                  <span className="text-white font-bold text-sm">🍔</span>
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-red-500 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-1">
+                  <span className="text-white font-bold text-sm md:text-base">🍔</span>
                 </div>
-                <p className="text-xs text-text-secondary font-medium">Fast Food</p>
+                <p className="text-xs md:text-sm text-text-secondary font-medium">Fast Food</p>
               </div>
               
               <div 
-                className={`group cursor-pointer p-2 rounded-lg transition-all duration-200 text-center ${
+                className={`group cursor-pointer p-2 md:p-3 rounded-lg transition-all duration-200 text-center ${
                   filters.category === 'Coffee' ? 'bg-green-accent/20 border-2 border-green-accent' : 'hover:bg-gray-800/50 border-2 border-transparent'
                 }`}
                 onClick={() => handleCategoryClick('Coffee')}
               >
-                <div className="w-8 h-8 bg-gradient-to-br from-amber-600 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-1">
-                  <span className="text-white font-bold text-sm">☕</span>
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-amber-600 to-orange-600 rounded-full flex items-center justify-center mx-auto mb-1">
+                  <span className="text-white font-bold text-sm md:text-base">☕</span>
                 </div>
-                <p className="text-xs text-text-secondary font-medium">Coffee</p>
+                <p className="text-xs md:text-sm text-text-secondary font-medium">Coffee</p>
               </div>
               
             </div>

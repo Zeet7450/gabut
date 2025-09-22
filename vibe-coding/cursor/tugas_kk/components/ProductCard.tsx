@@ -4,7 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { ShoppingCart, MessageCircle, Heart } from 'lucide-react'
+import { ShoppingCart, Heart } from 'lucide-react'
 import { useSession } from 'next-auth/react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { Product } from '@/lib/types'
@@ -15,7 +15,6 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, onChatClick }: ProductCardProps) {
-  const [isHovered, setIsHovered] = useState(false)
   const [isImageLoaded, setIsImageLoaded] = useState(false)
   const { data: session } = useSession()
   const queryClient = useQueryClient()
@@ -43,122 +42,87 @@ export function ProductCard({ product, onChatClick }: ProductCardProps) {
     }
   }
 
-  const handleChatClick = (e: React.MouseEvent) => {
-    e.preventDefault()
-    e.stopPropagation()
-    if (onChatClick) {
-      onChatClick(product)
-    }
-  }
-
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -5 }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      className="group relative bg-surface border border-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+      transition={{ duration: 0.4 }}
+      className="group"
     >
-      <Link href={`/products/${product.id}`}>
-        <div className="relative aspect-square overflow-hidden">
-          <Image
-            src={product.imageUrl || '/placeholder-product.jpg'}
-            alt={product.title}
-            fill
-            className={`object-cover transition-transform duration-300 ${
-              isHovered ? 'scale-105' : 'scale-100'
-            }`}
-            onLoad={() => setIsImageLoaded(true)}
-          />
-          
-          {!isImageLoaded && (
-            <div className="absolute inset-0 bg-gray-700 animate-pulse" />
-          )}
-
-          {/* Overlay on hover */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isHovered ? 1 : 0 }}
-            className="absolute inset-0 bg-black/50 flex items-center justify-center space-x-4"
-          >
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={handleAddToCart}
-              disabled={!session || addToCartMutation.isPending}
-              className="bg-green-accent hover:bg-green-accent/90 disabled:opacity-50 disabled:cursor-not-allowed text-white p-3 rounded-full shadow-lg transition-colors"
-              title="Add to cart"
-            >
-              <ShoppingCart className="w-5 h-5" />
-            </motion.button>
+      <div className="bg-gray-800/40 rounded-3xl overflow-hidden border border-gray-700/50 hover:border-green-accent/60 transition-all duration-300 hover:shadow-2xl hover:shadow-green-accent/20 hover:-translate-y-2 backdrop-blur-sm">
+        <Link href={`/products/${product.id}`}>
+          <div className="relative overflow-hidden">
+            <Image
+              src={product.imageUrl || '/placeholder-product.jpg'}
+              alt={product.title}
+              width={300}
+              height={240}
+              className="w-full h-60 object-cover group-hover:scale-110 transition-transform duration-500"
+              onLoad={() => setIsImageLoaded(true)}
+            />
             
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={handleChatClick}
-              className="bg-yellow-accent hover:bg-yellow-accent/90 text-white p-3 rounded-full shadow-lg transition-colors"
-              title="Chat about this item"
-            >
-              <MessageCircle className="w-5 h-5" />
-            </motion.button>
-          </motion.div>
+            {!isImageLoaded && (
+              <div className="absolute inset-0 bg-gray-700 animate-pulse" />
+            )}
 
-          {/* Category badge */}
-          <div className="absolute top-3 left-3">
-            <span className={`px-2 py-1 text-xs font-medium rounded-full ${
-              product.category === 'Makanan' 
-                ? 'bg-green-accent text-white' 
-                : 'bg-yellow-accent text-white'
-            }`}>
-              {product.category}
-            </span>
-          </div>
-
-          {/* Wishlist button */}
-          <button
-            onClick={(e) => {
-              e.preventDefault()
-              e.stopPropagation()
-              // Wishlist functionality would go here
-            }}
-            className="absolute top-3 right-3 p-2 bg-black/50 hover:bg-black/70 text-white rounded-full transition-colors opacity-0 group-hover:opacity-100"
-            title="Add to wishlist"
-          >
-            <Heart className="w-4 h-4" />
-          </button>
-        </div>
-
-        <div className="p-4">
-          <h3 className="font-semibold text-text-primary text-lg mb-2 line-clamp-2 group-hover:text-green-accent transition-colors">
-            {product.title}
-          </h3>
-          
-          <p className="text-text-muted text-sm mb-3 line-clamp-2">
-            {product.description}
-          </p>
-
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <span className="text-2xl font-bold text-green-accent">
-                Rp {product.price.toLocaleString()}
+            {/* Category badge */}
+            <div className="absolute top-4 left-4">
+              <span className={`px-3 py-1.5 text-sm font-bold rounded-full shadow-lg ${
+                product.category === 'Makanan' 
+                  ? 'bg-gradient-to-r from-green-accent to-yellow-accent text-white' 
+                  : 'bg-gradient-to-r from-blue-accent to-purple-accent text-white'
+              }`}>
+                {product.category}
               </span>
             </div>
 
-            <div className="flex items-center space-x-2">
+            {/* Wishlist button */}
+            <div className="absolute top-4 right-4">
               <button
-                onClick={handleAddToCart}
-                disabled={!session || addToCartMutation.isPending}
-                className="bg-green-accent hover:bg-green-accent/90 disabled:opacity-50 disabled:cursor-not-allowed text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors flex items-center space-x-2"
+                onClick={(e) => {
+                  e.preventDefault()
+                  e.stopPropagation()
+                  // Wishlist functionality would go here
+                }}
+                className="w-10 h-10 bg-gray-900/80 hover:bg-red-500 rounded-full flex items-center justify-center transition-all duration-200 hover:scale-110 shadow-lg"
+                title="Add to wishlist"
               >
-                <ShoppingCart className="w-4 h-4" />
-                <span>Add</span>
+                <Heart className="w-5 h-5 text-white" />
               </button>
             </div>
-          </div>
-        </div>
-      </Link>
 
+            {/* Gradient overlay on hover */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          </div>
+
+          <div className="p-6">
+            <h3 className="text-white font-bold text-xl mb-3 line-clamp-2 group-hover:text-green-accent transition-colors duration-200">
+              {product.title}
+            </h3>
+            
+            <p className="text-gray-400 text-sm mb-4 line-clamp-2">
+              {product.description}
+            </p>
+
+            <div className="flex items-center justify-between mb-6">
+              <div className="flex items-center space-x-3">
+                <span className="text-green-accent font-bold text-2xl">
+                  Rp {product.price.toLocaleString()}
+                </span>
+              </div>
+            </div>
+
+            <button
+              onClick={handleAddToCart}
+              disabled={!session || addToCartMutation.isPending}
+              className="w-full bg-gradient-to-r from-green-accent to-yellow-accent text-white py-3 px-4 rounded-2xl font-bold hover:from-green-accent/90 hover:to-yellow-accent/90 transition-all duration-200 hover:scale-105 flex items-center justify-center space-x-2 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <ShoppingCart className="w-5 h-5" />
+              <span>Add to Cart</span>
+            </button>
+          </div>
+        </Link>
+      </div>
     </motion.div>
   )
 }

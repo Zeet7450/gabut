@@ -274,7 +274,7 @@ export default function ProductDetailPage() {
             </motion.div>
 
             {/* Thumbnail Images */}
-            <div className="grid grid-cols-4 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
               {images.map((image, index) => (
                 <motion.button
                   key={index}
@@ -435,9 +435,9 @@ export default function ProductDetailPage() {
             
           <div className="space-y-6">
             {/* Testimoni Grid */}
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
               {displayedTestimonials.map((testimonial) => (
-                <div key={testimonial.id} className="bg-gray-800/30 rounded-lg p-6">
+                <div key={testimonial.id} className="bg-gray-800/30 rounded-lg p-4 md:p-6">
                   <div className="flex items-center space-x-2 mb-3">
                     <div className="flex text-yellow-accent">
                       {[...Array(5)].map((_, i) => (
@@ -500,7 +500,7 @@ export default function ProductDetailPage() {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="motion-container"
         >
-          <div className="bg-gradient-to-br from-gray-800/40 to-gray-900/40 rounded-2xl p-8 border border-gray-700/30 backdrop-blur-sm">
+          <div className="bg-gradient-to-br from-gray-800/40 to-gray-900/40 rounded-2xl p-4 md:p-8 border border-gray-700/30 backdrop-blur-sm">
             {/* Header */}
             <div className="text-center mb-8">
               <div className="inline-flex items-center space-x-3 bg-gradient-to-r from-blue-500/20 to-purple-500/20 px-6 py-3 rounded-full border border-blue-500/30">
@@ -545,7 +545,7 @@ export default function ProductDetailPage() {
             </div>
 
             {/* Statistik Penjual */}
-            <div className="grid grid-cols-2 gap-4 mb-8">
+            <div className="grid grid-cols-2 gap-3 md:gap-4 mb-6 md:mb-8">
               <div className="bg-gradient-to-br from-green-500/20 to-green-600/20 rounded-xl p-4 text-center border border-green-500/30">
                 <div className="text-3xl font-bold text-green-accent mb-1">2.5K+</div>
                 <div className="text-gray-400 text-sm">{language === 'id' ? 'Produk Terjual' : 'Products Sold'}</div>
@@ -557,7 +557,7 @@ export default function ProductDetailPage() {
             </div>
 
             {/* Deskripsi Penjual */}
-            <div className="bg-gray-800/30 rounded-xl p-6 mb-8 border border-gray-700/50">
+            <div className="bg-gray-800/30 rounded-xl p-4 md:p-6 mb-6 md:mb-8 border border-gray-700/50">
               <p className="text-gray-300 text-center leading-relaxed">
                 {language === 'id' 
                   ? 'Penjual berpengalaman dengan fokus pada kualitas produk terbaik. Setiap produk telah melalui seleksi ketat untuk memastikan kepuasan pelanggan.'

@@ -389,19 +389,19 @@ textarea {
 }
 
 .action-buttons-container {
-  @apply flex flex-col sm:flex-row gap-4 transition-all duration-300;
+  @apply flex flex-col sm:flex-row gap-3 md:gap-4 transition-all duration-300;
 }
 
 .product-info-section {
-  @apply space-y-6 transition-all duration-300 p-6 rounded-xl;
+  @apply space-y-4 md:space-y-6 transition-all duration-300 p-4 md:p-6 rounded-xl;
 }
 
 .product-images-section {
-  @apply space-y-4 transition-all duration-300 p-4 rounded-xl;
+  @apply space-y-4 transition-all duration-300 p-2 md:p-4 rounded-xl;
 }
 
 .main-grid-container {
-  @apply grid lg:grid-cols-2 gap-12 transition-all duration-300;
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 transition-all duration-300;
 }
 
 .main-container {
@@ -430,7 +430,7 @@ textarea {
 }
 
 .loading-grid {
-  @apply grid lg:grid-cols-2 gap-12 transition-all duration-300;
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 transition-all duration-300;
 }
 
 .loading-space {
@@ -446,7 +446,7 @@ textarea {
 }
 
 .loading-grid-2 {
-  @apply grid grid-cols-4 gap-4 transition-all duration-300;
+  @apply grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 transition-all duration-300;
 }
 
 .loading-skeleton-main-image {
