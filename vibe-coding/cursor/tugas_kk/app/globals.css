@@ -1,0 +1,511 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Prevent body scroll when popup is open */
+body.popup-open {
+  overflow: hidden !important;
+  position: fixed !important;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+:root {
+  --bg-primary: #0b1220;
+  --bg-secondary: #0f1724;
+  --surface: #0f1724;
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --green-accent: #10b981;
+  --yellow-accent: #f59e0b;
+  --border: #1e293b;
+  --border-hover: #334155;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover);
+}
+
+/* Cursor styles - using default system cursor */
+/* Ensure clickable elements use pointer cursor */
+button,
+a,
+[role="button"],
+[onclick],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+select,
+textarea[readonly="false"] {
+  cursor: pointer;
+}
+
+/* Ensure non-clickable elements use default cursor */
+div,
+span,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+img,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+textarea {
+  cursor: default;
+}
+
+/* Utility classes */
+.text-gradient {
+  background: linear-gradient(135deg, var(--green-accent), var(--yellow-accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animation classes */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Loading spinner */
+.spinner {
+  border: 2px solid var(--border);
+  border-top: 2px solid var(--green-accent);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Input styles */
+.input {
+  @apply w-full px-4 py-3 bg-bg-secondary border border-gray-700 rounded-lg text-text-primary placeholder-text-muted focus:outline-none focus:ring-2 focus:ring-green-accent focus:border-transparent transition-all duration-200;
+}
+
+.input:focus {
+  @apply bg-bg-primary;
+}
+
+/* Focus styles */
+.focus-ring {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--green-accent), 0 0 0 4px var(--bg-primary);
+}
+
+/* Custom grid background */
+.grid-bg {
+  background-image: 
+    linear-gradient(rgba(16, 185, 129, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(16, 185, 129, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Responsive text */
+@media (max-width: 640px) {
+  .text-responsive {
+    font-size: 0.875rem;
+  }
+}
+
+@media (min-width: 641px) {
+  .text-responsive {
+    font-size: 1rem;
+  }
+}
+
+/* Button styles */
+.btn-primary {
+  @apply bg-green-accent text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 ease-in-out;
+  @apply focus:outline-none focus:ring-2 focus:ring-green-accent focus:ring-offset-2 focus:ring-offset-bg-primary;
+  @apply active:scale-95 transform;
+  border: 2px solid transparent;
+}
+
+.btn-secondary {
+  @apply bg-transparent text-text-primary font-semibold px-6 py-3 rounded-lg transition-all duration-300 ease-in-out;
+  @apply focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-2 focus:ring-offset-bg-primary;
+  @apply active:scale-95 transform;
+  border: 2px solid #374151;
+}
+
+.btn-outline {
+  @apply bg-transparent text-text-primary font-semibold px-6 py-3 rounded-lg transition-all duration-300 ease-in-out;
+  @apply focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-offset-2 focus:ring-offset-bg-primary;
+  @apply active:scale-95 transform;
+  border: 2px solid #374151;
+}
+
+/* Product page button styles - ONLY for Add to Cart, Chat with CS, and Like button */
+.btn-product-primary {
+  @apply bg-green-accent text-white font-semibold px-8 py-4 rounded-xl transition-all duration-300 ease-in-out;
+  @apply hover:bg-green-accent/90 hover:shadow-xl hover:shadow-green-accent/30;
+  @apply focus:outline-none focus:ring-4 focus:ring-green-accent/50 focus:ring-offset-2 focus:ring-offset-bg-primary;
+  @apply active:scale-95 transform;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-product-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease-in-out;
+}
+
+.btn-product-primary:hover::before {
+  left: 100%;
+}
+
+.btn-product-primary:hover {
+  border-color: #059669;
+  box-shadow: 0 20px 40px -10px rgba(16, 185, 129, 0.4), 0 8px 16px -4px rgba(16, 185, 129, 0.2);
+  transform: translateY(-2px);
+}
+
+.btn-product-secondary {
+  @apply bg-transparent text-text-primary font-semibold px-8 py-4 rounded-xl transition-all duration-300 ease-in-out;
+  @apply hover:bg-gray-800/60 hover:shadow-xl hover:shadow-gray-900/30;
+  @apply focus:outline-none focus:ring-4 focus:ring-gray-600/50 focus:ring-offset-2 focus:ring-offset-bg-primary;
+  @apply active:scale-95 transform;
+  border: 2px solid #4b5563;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-product-secondary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transition: left 0.6s ease-in-out;
+}
+
+.btn-product-secondary:hover::before {
+  left: 100%;
+}
+
+.btn-product-secondary:hover {
+  border-color: #6b7280;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4), 0 8px 16px -4px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Loading state for buttons */
+.btn-product-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.btn-product-primary:disabled:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  border-color: transparent !important;
+}
+
+.btn-product-primary:disabled::before {
+  display: none;
+}
+
+/* Pulse animation for loading state */
+@keyframes pulse-loading {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.btn-product-primary.loading {
+  animation: pulse-loading 1.5s ease-in-out infinite;
+}
+
+/* Heart button hover effect - ONLY for like button */
+.heart-button {
+  @apply p-4 border border-gray-700 rounded-xl transition-all duration-300 hover:bg-gray-800/60 hover:border-gray-600 hover:shadow-lg hover:shadow-gray-900/25 active:scale-95 transform;
+}
+
+.heart-button:hover .heart-icon {
+  @apply text-red-500 transform scale-105;
+}
+
+.heart-icon {
+  @apply w-5 h-5 text-text-muted transition-all duration-300;
+}
+
+/* Product page specific styles - No hover effects except for buttons */
+.back-btn {
+  @apply inline-flex items-center space-x-2 text-text-muted transition-all duration-300 px-3 py-2 rounded-lg;
+}
+
+.category-badge {
+  @apply px-3 py-1 text-sm font-medium rounded-full transition-all duration-300;
+}
+
+.category-badge.food {
+  @apply bg-green-accent text-white;
+}
+
+.category-badge.other {
+  @apply bg-yellow-accent text-white;
+}
+
+.rating-star {
+  @apply w-5 h-5 transition-all duration-300;
+}
+
+.rating-star.filled {
+  @apply text-yellow-accent fill-current;
+}
+
+.rating-star.empty {
+  @apply text-gray-600;
+}
+
+.price-display {
+  @apply text-3xl font-bold text-green-accent transition-all duration-300;
+}
+
+.product-details-section {
+  @apply bg-surface border border-gray-800 rounded-xl p-8 transition-all duration-300;
+}
+
+.main-product-image {
+  @apply aspect-square relative overflow-hidden rounded-xl bg-surface border border-gray-800 transition-all duration-300;
+}
+
+.warning-message {
+  @apply mt-4 p-4 bg-yellow-accent/10 border border-yellow-accent/20 rounded-lg transition-all duration-300;
+}
+
+.product-title {
+  @apply text-3xl md:text-4xl font-bold text-text-primary mb-4 transition-all duration-300;
+}
+
+.product-description {
+  @apply text-text-secondary text-lg leading-relaxed mb-8 transition-all duration-300 p-4 rounded-lg;
+}
+
+.quantity-label {
+  @apply text-text-primary font-medium transition-all duration-300;
+}
+
+.quantity-display {
+  @apply text-text-primary font-medium min-w-[3rem] text-center transition-all duration-300;
+}
+
+.quantity-btn {
+  @apply p-2 border border-gray-700 rounded-lg transition-all duration-300 active:scale-95 transform;
+}
+
+.thumbnail-btn {
+  @apply aspect-square relative overflow-hidden rounded-lg border-2 transition-all duration-300 active:scale-95 transform;
+}
+
+.thumbnail-btn.selected {
+  @apply border-green-accent shadow-lg shadow-green-accent/20;
+}
+
+.action-buttons-container {
+  @apply flex flex-col sm:flex-row gap-4 transition-all duration-300;
+}
+
+.product-info-section {
+  @apply space-y-6 transition-all duration-300 p-6 rounded-xl;
+}
+
+.product-images-section {
+  @apply space-y-4 transition-all duration-300 p-4 rounded-xl;
+}
+
+.main-grid-container {
+  @apply grid lg:grid-cols-2 gap-12 transition-all duration-300;
+}
+
+.main-container {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 transition-all duration-300;
+}
+
+.main-page-container {
+  @apply min-h-screen bg-bg-primary transition-all duration-300;
+}
+
+/* Loading states - No hover effects */
+.loading-container {
+  @apply min-h-screen bg-bg-primary transition-all duration-300;
+}
+
+.loading-container-inner {
+  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 transition-all duration-300;
+}
+
+.loading-skeleton {
+  @apply animate-pulse transition-all duration-300;
+}
+
+.loading-skeleton-title {
+  @apply h-8 bg-gray-700 rounded w-32 mb-8 transition-all duration-300;
+}
+
+.loading-grid {
+  @apply grid lg:grid-cols-2 gap-12 transition-all duration-300;
+}
+
+.loading-space {
+  @apply space-y-4 transition-all duration-300;
+}
+
+.loading-space-2 {
+  @apply space-y-6 transition-all duration-300;
+}
+
+.loading-space-3 {
+  @apply space-y-2 transition-all duration-300;
+}
+
+.loading-grid-2 {
+  @apply grid grid-cols-4 gap-4 transition-all duration-300;
+}
+
+.loading-skeleton-main-image {
+  @apply aspect-square bg-gray-700 rounded-xl transition-all duration-300;
+}
+
+.loading-skeleton-thumbnail {
+  @apply aspect-square bg-gray-700 rounded-lg transition-all duration-300;
+}
+
+.loading-skeleton-text {
+  @apply bg-gray-700 rounded transition-all duration-300;
+}
+
+.loading-skeleton-button {
+  @apply h-12 bg-gray-700 rounded w-full transition-all duration-300;
+}
+
+.loading-skeleton-text-large {
+  @apply h-8 bg-gray-700 rounded transition-all duration-300;
+}
+
+.loading-skeleton-text-extra-small {
+  @apply h-4 bg-gray-700 rounded transition-all duration-300;
+}
+
+.loading-skeleton-text-medium {
+  @apply h-6 bg-gray-700 rounded transition-all duration-300;
+}
+
+.loading-skeleton-text-femto {
+  @apply h-4 bg-gray-700 rounded transition-all duration-300;
+}
+
+/* Error states - No hover effects */
+.error-container {
+  @apply min-h-screen bg-bg-primary flex items-center justify-center transition-all duration-300;
+}
+
+.error-center-container {
+  @apply text-center transition-all duration-300 p-8 rounded-xl;
+}
+
+.error-title {
+  @apply text-2xl font-bold text-text-primary mb-4 transition-all duration-300;
+}
+
+.error-message {
+  @apply text-text-muted mb-8 transition-all duration-300;
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-primary: #0b1220;
+    --bg-secondary: #0f1724;
+    --surface: #0f1724;
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+  }
+}
